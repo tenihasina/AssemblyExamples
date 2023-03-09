@@ -11,18 +11,22 @@ code segment
 debut:
     mov ax, data
     mov ds, ax
-    xor ax, ax    
-    mov bx, prod    
+    xor ax, ax; remise à zéro de ax pour les instructions suivantes
+
+    mov bx, prod ;stockage temporaire du résultat   
     xor si, si
-    mov cl, taille
+    mov cl, taille;somme de 0 à taille-1
 boucle:
     mov al, vec1[si]
-    mul vec2[si]
+    mul vec2[si]; vec1[i]*vec2[i]
+    ; on additionne le résultat de la multiplication à bx
     add bx, ax
-    add bx, dx
+    ; si jamais on gère des words et non des bytes
+    add bx, dx; 
+    ; incrément indice
     inc si
     loop boucle
-ecriture_memoire:
+    ;ecriture_memoire:
     mov prod, bx
 fin:
     mov ax, 4ch
