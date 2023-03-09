@@ -8,8 +8,11 @@ data segment
 data ends
 
 code segment
+debut:
     mov ax, data
     mov ds, ax
+    
+fin:
     mov ax, 4ch
     int 21h
 code ends
