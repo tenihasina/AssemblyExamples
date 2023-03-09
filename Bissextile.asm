@@ -18,7 +18,7 @@ debut:
     ;C2 : annee modulo 4 egal 0
     mov AX, annee 
     mov BX, 4
-    div BX
+    div BX; division d'un word donc résultat sur (DX AX)
     cmp DX, 0
     jne faux
     ;C3 : annee modulo 100 <> 0
@@ -26,7 +26,7 @@ debut:
     xor BX, BX
     mov AX, annee 
     mov BX, 100
-    div BX
+    div BX; division d'un word donc résultat sur (DX AX)
     cmp DX, 0
     jne vrai
     ;C1 : annee modulo 400 egal 0
@@ -34,18 +34,18 @@ debut:
     xor BX, BX
     mov AX, annee
     mov BX, 400
-    div BX
+    div BX; division d'un word donc résultat sur (DX AX)
     cmp DX, 0
     jne faux
 vrai:
     mov BL, 1
-    MOV AH, 9
+    MOV AH, 9 ;affichage message
     mov DX, OFFSET mesg1
     int 21h    
     jmp fin
 faux:
     mov BL, 0
-    mov AH, 9
+    mov AH, 9 ;affichage message
     mov DX, OFFSET mesg2
     int 21h 
     jmp fin
