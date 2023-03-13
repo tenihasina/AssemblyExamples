@@ -23,31 +23,29 @@ full_matrix:
 dot_product:
     xor ax, ax
     xor dx, dx
-    mov al, ds:[bp][si]
+    mov al, ds:[bp][si]; adressage basé indexé pour la matrice
     mul byte ptr vec[di]; vec1[i]*vec2[i]
     ; on additionne le résultat de la multiplication à bx
     add bx, ax 
-    ; si jamais on gère des words et non des bytes
+    ; si jamais on multiplie des words et non des bytes
     add bx, dx 
     ; incrément indice
     inc si
     inc di
     cmp di, cx
     jne dot_product
-; emplacement mémoire indiqué par si
+; emplacement mémoire indiqué par registre si, attention word et non byte ! 
 calcul_index_ecriture:
     xor ax, ax
     xor bp, bp
     mov ax, si
     div cl
     xor ah, ah; on ne veut pas du reste de la division
-    mov bp, ax; emplacement pour des words, donc 2 cases mémoires
+    mov bp, ax
     dec bp
-    add bp, bp
+    add bp, bp; index écriture = ((si/taille) - 1)*2 
 ecriture:
-    mov res[bp], bx 
-    ;xor dx, dx
-    ; inc bp   
+    mov res[bp], bx  
     cmp ax, cx 
     jne full_matrix
 fin:
