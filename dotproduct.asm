@@ -20,9 +20,7 @@ boucle:
     mov al, vec1[si]
     mul vec2[si]; vec1[i]*vec2[i]
     ; on additionne le résultat de la multiplication à bx
-    add bx, ax
-    ; si jamais on gère des words et non des bytes
-    add bx, dx; 
+    add bx, ax 
     ; incrément indice
     inc si
     loop boucle
