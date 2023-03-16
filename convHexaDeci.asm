@@ -3,7 +3,7 @@ assume cs: code, ds:data
 data segment
     valeur dw 0F8B4h; nombre à convertir
     diviseur dw 10000,1000,100,10,1; diviseurs successifs
-    msg db 'Le code decimal est :','$'; affichage resultat
+    msg db 'Le code decimal est : ','$'; affichage resultat
     res db 30h,30h,30h,30h,30h,'$'; tab resultats, 30h ascii 0
 data ends
 
