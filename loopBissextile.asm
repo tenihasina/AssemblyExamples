@@ -24,7 +24,7 @@ debut:
     lea BP, res; offset de l'adresse logique du tableau res
 boucle:
     ;C2 : annees[SI] modulo 4 egal 0
-    xor BX, BX
+    ;xor BX, BX
     xor DX, DX
     mov AX, annees[SI]
     mov BX, 4
@@ -33,7 +33,7 @@ boucle:
     jne faux
     ;C3 : annees[SI] modulo 100 <> 0
     xor DX, DX
-    xor BX, BX
+    ;xor BX, BX
     mov AX, annees[SI] 
     mov BX, 100
     div BX
@@ -41,7 +41,7 @@ boucle:
     jne vrai
     ;C1 : annees[SI] modulo 400 egal 0
     xor DX, DX
-    xor BX, BX
+    ;xor BX, BX
     mov AX, annees[SI]
     mov BX, 400
     div BX
