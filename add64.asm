@@ -10,8 +10,24 @@ code segment
 debut:
     mov ax, data
     mov ds, ax
-    
-    
-
+    lea bx, haut[7]
+    lea si, bas[7]
+    lea di, result[7]
+    mov cx, 8
+    ; clear carry
+    boucle:
+        xor ax, ax
+        mov al, byte ptr [bx]
+        clc
+        popf
+        adc al, byte ptr [si]
+        pushf
+        mov [di], al
+        dec bx
+        dec si
+        dec di
+    loop boucle
+    mov ax, 4ch
+    int 21h
 code ends   
     end debut
